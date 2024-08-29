@@ -1,11 +1,15 @@
 import { ChangeEvent, useState } from 'react'
 import propertiesJson from '../assets/properties.json'
-import { placeholderImg } from '../consts'
-import { ArrowsOut, Toilet } from '@phosphor-icons/react'
+import { ResultCard } from './ResultCard'
+import { Property } from '../types'
+import { NoResults } from './NoResults'
+import { Funnel } from '@phosphor-icons/react'
+import { FiltersModal } from './FiltersModal'
 
 export function SearchForm() {
-  const [search, setSearch] = useState("")
-  const [results, setResults] = useState<typeof propertiesJson>(propertiesJson)
+  const [search, setSearch] = useState<string>("")
+  const [results, setResults] = useState<Property[]>(propertiesJson)
+  const [showFilterModal, setShowFilterModal] = useState(false)
 
   const searchChange = async (e: HTMLInputElement) => {
     const searchStr = e.value
@@ -14,6 +18,8 @@ export function SearchForm() {
     if(searchStr.length > 0) setResults(searchProperties(searchStr))
     else setResults(propertiesJson)
   }
+
+  const toggleFilterModal = () => setShowFilterModal(!showFilterModal)
 
   return (
     <>
@@ -24,44 +30,37 @@ export function SearchForm() {
           value={search}
           onChange={(e: ChangeEvent<HTMLInputElement>) => searchChange(e.target)}
         />
-        {results.length > 0 &&
+        {results.length > 0 ?
           <div className="mt-4">
-            {search.length > 0 &&
-              <h3 className="text-lg mb-2">
-                Search results for{" "} 
-                <span className="border-b-2 border-sky-500">{search}</span>
-              </h3>
-            }
+            <div className="flex flex-row justify-between items-center mb-2">
+                <h3 className="text-lg min-h-7">
+                  {search.length > 0 &&
+                    <>
+                      <b>{results.length}</b> search results for{" "} 
+                      <span className="border-b-2 border-sky-500 font-semibold">{search}</span>
+                    </>
+                  }
+                </h3>
+                <button className="btn btn-outline h-8 min-h-8" onClick={toggleFilterModal}>
+                  <Funnel className="size-4 opacity-70" weight="fill" />
+                  Filter
+                </button>
+            </div>
+            <hr className="hidden mx-auto my-4 h-1 rounded border-0 bg-black/10" />
             <div className="gap-3 flex flex-col">
               {results.map(r =>
                 <ResultCard key={r.id} r={r} />
               )}
             </div>
           </div>
+          : 
+          <NoResults search={search} />
+        }
+        { showFilterModal &&
+          <FiltersModal 
+            toggleModal={toggleFilterModal} />
         }
     </>
-  )
-}
-
-function ResultCard({r}: any) {
-  return (
-    <div className="card sm:card-side bg-base-100 shadow-lg rounded">
-      <figure className="bg-gray-200 max-h-48 sm:max-h-none md:w-2/5 lg:w-1/5 p-0">
-        <img className="object-cover w-full h-full invert-0 dark:invert" src={placeholderImg}/>
-      </figure>
-      <div className="card-body w-full md:w-3/5 lg:4/5">
-        <h2 className="card-title">{r.name}</h2>
-        <p className="text-sm">{r.description.length > 170 ? `${r.description.slice(0,167)}...` : r.description }</p>
-        <div className="bg-black/[0.02] flex flex-row p-2 rounded w-auto gap-3 divide-x-2 ">
-          <span className="flex flex-row px-4">
-            <Toilet size={24} className="mr-1" /> {r.bathrooms}
-          </span>
-          <span className="flex flex-row px-4">
-            <ArrowsOut size={24} className="mr-1" /> {r.floorArea} sqm
-          </span>
-        </div>
-      </div>
-    </div>
   )
 }
 
