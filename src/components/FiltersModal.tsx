@@ -6,13 +6,11 @@ interface FiltersModalProps {
   toggleModal: () => void,
   filters: Filters,
   setFilters: React.Dispatch<React.SetStateAction<Filters>> 
-  updateResults: () => void
 }
 
-export function FiltersModal({toggleModal, filters, setFilters, updateResults} : FiltersModalProps) {
+export function FiltersModal({toggleModal, filters, setFilters} : FiltersModalProps) {
   const updateFilters = (key: string, val: number) => {
     setFilters({...filters, [key]: val})
-    updateResults()
   }
 
   const resetFilters = () => setFilters(emptyFilters)

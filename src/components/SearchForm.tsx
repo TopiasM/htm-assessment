@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import propertiesJson from '../assets/properties.json'
 import { ResultCard } from './ResultCard'
 import { Filters, Property } from '../types'
@@ -17,26 +17,25 @@ export function SearchForm() {
     const searchStr = e.target.value
     setSearch(searchStr)
     
-    if(searchStr.length > 0) updateResults()
-    else setResults(propertiesJson)
+    if(searchStr.length === 0) setResults(propertiesJson)
   }
 
   const toggleFilterModal = () => setShowFilterModal(!showFilterModal)
 
   const searchProperties = () => {
-    return propertiesJson.filter(p => {
+    setResults(propertiesJson.filter(p => {
       const searchCheck = (p.description.includes(search) || p.name.includes(search))
       const filtersCheck = p.floorArea >= filters.minSqm &&
         p.maximumPax >= filters.minMaxGuests &&
         p.bathrooms >= filters.minBathrooms
 
       return searchCheck && filtersCheck
-    })
+    }))
   }
 
-  const updateResults = () => {
-    setResults(searchProperties())
-  }
+  useEffect(() => {
+    searchProperties()
+  }, [search, filters])
 
   return (
     <>
@@ -83,8 +82,7 @@ export function SearchForm() {
           <FiltersModal 
             toggleModal={toggleFilterModal}
             filters={filters}
-            setFilters={setFilters}
-            updateResults={updateResults}/>
+            setFilters={setFilters}/>
         }
     </>
   )
