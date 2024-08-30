@@ -2,16 +2,20 @@ import { placeholderImg } from '../consts'
 import { ArrowsOut, Toilet, User } from '@phosphor-icons/react'
 import { Property } from '../types'
 
-export function ResultCard({r}: {r: Property}) {
+export function ResultCard({prop}: {prop: Property}) {
   return (
     <div className="card sm:card-side bg-base-100 shadow-lg rounded border border-black/10">
       <figure className="bg-gray-200 max-h-48 sm:max-h-none md:w-2/5 lg:w-1/5 p-0">
         <img className="object-cover w-full h-full invert-0 dark:invert" src={placeholderImg}/>
       </figure>
       <div className="card-body w-full md:w-3/5 lg:4/5">
-        <h2 className="card-title">{r.name}</h2>
-        <p className="text-sm">{r.description}</p>
-        <DetailsContainer bathrooms={r.bathrooms} floorArea={r.floorArea} maxPax={r.maximumPax} />
+        <h2 className="card-title">{prop.name}</h2>
+        <p className="text-sm">{prop.description}</p>
+        <DetailsContainer
+          bathrooms={prop.bathrooms}
+          floorArea={prop.floorArea}
+          maxPax={prop.maximumPax}
+        />
       </div>
     </div>
   )

@@ -26,3 +26,9 @@ export interface Property {
   online: boolean;
   images: never[];
 }
+
+export interface Filters {
+  minMaxGuests: number;
+  minSqm: number;
+  minBathrooms: number;
+}
