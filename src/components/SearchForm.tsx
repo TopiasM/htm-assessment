@@ -16,8 +16,6 @@ export function SearchForm() {
   const searchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchStr = e.target.value
     setSearch(searchStr)
-    
-    if(searchStr.length === 0) setResults(propertiesJson)
   }
 
   const toggleFilterModal = () => setShowFilterModal(!showFilterModal)
