@@ -3,7 +3,7 @@ import propertiesJson from '../assets/properties.json'
 import { PropertyCard } from './PropertyCard'
 import { Filters, Property } from '../types'
 import { NoResults } from './NoResults'
-import { Funnel } from '@phosphor-icons/react'
+import { Funnel } from '@phosphor-icons/react/Funnel'
 import { FiltersModal } from './FiltersModal'
 import { emptyFilters } from '../consts'
 

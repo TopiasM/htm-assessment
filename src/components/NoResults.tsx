@@ -1,4 +1,4 @@
-import { SmileySad } from '@phosphor-icons/react'
+import { SmileySad } from '@phosphor-icons/react/SmileySad'
 import { Filters } from '../types'
 
 export function NoResults({ search, filters }: { search: string; filters: Filters }) {
