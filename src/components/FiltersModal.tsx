@@ -1,16 +1,16 @@
-import React from "react"
-import { Filters } from "../types"
-import { emptyFilters } from "../consts"
+import React from 'react'
+import { Filters } from '../types'
+import { emptyFilters } from '../consts'
 
 interface FiltersModalProps {
-  toggleModal: () => void,
-  filters: Filters,
-  setFilters: React.Dispatch<React.SetStateAction<Filters>> 
+  toggleModal: () => void
+  filters: Filters
+  setFilters: React.Dispatch<React.SetStateAction<Filters>>
 }
 
-export function FiltersModal({toggleModal, filters, setFilters} : FiltersModalProps) {
+export function FiltersModal({ toggleModal, filters, setFilters }: FiltersModalProps) {
   const updateFilters = (key: string, val: number) => {
-    setFilters({...filters, [key]: val})
+    setFilters({ ...filters, [key]: val })
   }
 
   const resetFilters = () => setFilters(emptyFilters)
@@ -18,28 +18,33 @@ export function FiltersModal({toggleModal, filters, setFilters} : FiltersModalPr
   return (
     <dialog className="modal modal-open">
       <div className="modal-box">
-        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={toggleModal}>
+        <button
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          onClick={toggleModal}
+        >
           ✕
         </button>
         <h3 className="font-bold text-lg">Filters</h3>
         <div className="py-2 flex flex-col font-semibold">
           <div className="flex flex-col">
             <label>Min. max guests</label>
-            <RangeContainer 
+            <RangeContainer
               name="minMaxGuests"
               step={1}
               max={20}
               val={filters.minMaxGuests}
-              updateFilters={updateFilters} />
+              updateFilters={updateFilters}
+            />
           </div>
           <div>
             <label>Min. sqm</label>
-            <RangeContainer 
+            <RangeContainer
               name="minSqm"
               step={20}
               max={500}
-              val={filters.minSqm} 
-              updateFilters={updateFilters} />
+              val={filters.minSqm}
+              updateFilters={updateFilters}
+            />
           </div>
           <div>
             <label>Min. bathrooms</label>
@@ -48,7 +53,8 @@ export function FiltersModal({toggleModal, filters, setFilters} : FiltersModalPr
               step={1}
               max={5}
               val={filters.minBathrooms}
-              updateFilters={updateFilters} />
+              updateFilters={updateFilters}
+            />
           </div>
         </div>
         <button className="btn w-full btn-error" onClick={resetFilters}>
@@ -60,14 +66,14 @@ export function FiltersModal({toggleModal, filters, setFilters} : FiltersModalPr
 }
 
 interface RangeContainerProps {
-  name: string,
-  step: number,
-  max: number,
-  val: number,
-  updateFilters: (key: string, val: number) => void 
+  name: string
+  step: number
+  max: number
+  val: number
+  updateFilters: (key: string, val: number) => void
 }
 
-function RangeContainer({name: key, step, max, val, updateFilters}: RangeContainerProps) {
+function RangeContainer({ name: key, step, max, val, updateFilters }: RangeContainerProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVal = Number(e.target.value)
     updateFilters(key, newVal)
@@ -79,14 +85,16 @@ function RangeContainer({name: key, step, max, val, updateFilters}: RangeContain
     <div className="flex flex-row w-full mb-2">
       <label className="min-w-10 self-center font-bold" htmlFor={inputId}>
         {val === 0 ? '-' : val}
-      </label> 
-      <input 
+      </label>
+      <input
         name={inputId}
-        className="range range-sm my-2" type="range"
-        onChange={handleChange} 
-        step={step} max={max}
+        className="range range-sm my-2"
+        type="range"
+        onChange={handleChange}
+        step={step}
+        max={max}
         value={val}
-      /> 
+      />
     </div>
   )
 }

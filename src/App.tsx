@@ -1,13 +1,13 @@
-import { Footer } from "./components/Footer"
-import { Navbar } from "./components/Navbar"
-import { SearchForm } from "./components/SearchForm"
+import { Footer } from './components/Footer'
+import { Navbar } from './components/Navbar'
+import { SearchForm } from './components/SearchForm'
 
 function App() {
   return (
     <div className="min-h-screen p-2">
-      <Navbar/>
-      <Content/>
-      <Footer/>
+      <Navbar />
+      <Content />
+      <Footer />
     </div>
   )
 }
