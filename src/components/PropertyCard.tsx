@@ -9,9 +9,11 @@ export function PropertyCard({ prop }: { prop: Property }) {
   return (
     <div className="card sm:card-side bg-base-100 shadow-lg rounded border border-black/10">
       <figure className="bg-gray-200 max-h-48 sm:max-h-none md:w-2/5 lg:w-1/5 p-0">
-        <img alt="Placeholder image for property" 
+        <img
+          alt="Placeholder image for property"
           className="object-cover w-full h-full invert-0 dark:invert"
-          src={placeholderImg} />
+          src={placeholderImg}
+        />
       </figure>
       <div className="card-body lg:flex-row w-full md:w-3/5 lg:4/5 gap-4 lg:divide-x">
         <div className="flex flex-col gap-2 lg:w-10/12">

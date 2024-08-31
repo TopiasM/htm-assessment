@@ -5,7 +5,12 @@ export function Navbar() {
       <div className="navbar-end">
         <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" className="theme-controller" value="dark" />
+          <input
+            aria-label="Theme Controller"
+            type="checkbox"
+            className="theme-controller"
+            value="dark"
+          />
 
           {/* sun icon */}
           <svg
