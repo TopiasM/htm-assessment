@@ -8,7 +8,7 @@ git clone git@github.com:TopiasM/htm-assessment.git
 ```
 2. Move to the project folder
 ```
-cd picky-fe-assignment
+cd htm-assessment
 ```
 3. Install the packages using NPM
 ```
