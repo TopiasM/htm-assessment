@@ -22,7 +22,11 @@ export default function SearchForm() {
 
   const filterProperties = () =>
     propertiesJson.filter((p) => {
-      const searchCheck = p.description.includes(search) || p.name.includes(search)
+      const lowerSearch = search.toLowerCase()
+      const lowerDesc = p.description.toLowerCase()
+      const lowerName = p.name.toLowerCase()
+      const searchCheck = lowerDesc.includes(lowerSearch) || lowerName.includes(lowerSearch)
+
       const filtersCheck =
         p.floorArea >= filters.minSqm &&
         p.maximumPax >= filters.minMaxGuests &&
