@@ -1,4 +1,4 @@
-export function Footer() {
+export default function Footer() {
   return (
     <div className="sticky top-[100vh] flex justify-center py-4 font-medium text-gray-600 mt-4">
       © 2024 Topias Martikainen

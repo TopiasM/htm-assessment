@@ -1,4 +1,4 @@
-export function Navbar() {
+export default function Navbar() {
   return (
     <div className="navbar container mx-auto p-0">
       <h1 className="navbar-start font-bold">HTM assessment</h1>

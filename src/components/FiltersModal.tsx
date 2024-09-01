@@ -8,7 +8,7 @@ interface FiltersModalProps {
   setFilters: React.Dispatch<React.SetStateAction<Filters>>
 }
 
-export function FiltersModal({ toggleModal, filters, setFilters }: FiltersModalProps) {
+export default function FiltersModal({ toggleModal, filters, setFilters }: FiltersModalProps) {
   const updateFilters = (key: string, val: number) => {
     setFilters({ ...filters, [key]: val })
   }

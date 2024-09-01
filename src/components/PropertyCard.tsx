@@ -5,7 +5,7 @@ import { Toilet } from '@phosphor-icons/react/Toilet'
 import { User } from '@phosphor-icons/react/User'
 import { Property } from '../types'
 
-export function PropertyCard({ prop }: { prop: Property }) {
+export default function PropertyCard({ prop }: { prop: Property }) {
   return (
     <div className="card sm:card-side bg-base-100 shadow-lg rounded border border-black/10">
       <figure className="bg-gray-200 max-h-48 sm:max-h-none md:w-2/5 lg:w-1/5 p-0">
@@ -15,7 +15,7 @@ export function PropertyCard({ prop }: { prop: Property }) {
           src={placeholderImg}
         />
       </figure>
-      <div className="card-body lg:flex-row w-full md:w-3/5 lg:4/5 gap-4 lg:divide-x">
+      <div className="card-body lg:flex-row w-full md:w-3/5 lg:4/5 gap-4 lg:divide-x px-6 md:px-8">
         <div className="flex flex-col gap-2 lg:w-10/12">
           <div className="flex flex-row justify-between">
             <h2 className="card-title">{prop.name}</h2>

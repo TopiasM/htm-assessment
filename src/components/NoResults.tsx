@@ -1,9 +1,9 @@
 import { SmileySad } from '@phosphor-icons/react/SmileySad'
 import { Filters } from '../types'
 
-export function NoResults({ search, filters }: { search: string; filters: Filters }) {
+export default function NoResults({ search, filters }: { search: string; filters: Filters }) {
   return (
-    <div className="w-full flex flex-col p-4 items-center min-h-44 justify-center bg-black/5 mt-2 rounded-lg">
+    <div id="no-results" className="w-full flex flex-col p-4 items-center min-h-44 justify-center bg-black/5 mt-2 rounded-lg">
       <SmileySad className="size-24 text-red-500/70" />
       <h2 className="text-xl">
         No results for &quot;<b>{search}</b>&quot;

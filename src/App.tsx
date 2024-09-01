@@ -1,6 +1,6 @@
-import { Footer } from './components/Footer'
-import { Navbar } from './components/Navbar'
-import { SearchForm } from './components/SearchForm'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
+import SearchForm from './components/SearchForm'
 
 function App() {
   return (
