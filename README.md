@@ -1,4 +1,4 @@
-# HTM Full Stack Development Assessment
+
 > [LIVE DEMO](https://htm-assessment.vercel.app/)
 
 ### HOW TO RUN
